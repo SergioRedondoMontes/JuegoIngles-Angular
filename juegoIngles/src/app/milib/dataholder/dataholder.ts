@@ -30,8 +30,8 @@ export class DataHolder {
             myHeight = document.body.clientHeight;
           }
 
-        this.nScreenWidth=myWidth*0.99;
-        this.nScreenHeight=myHeight*0.96;
+        this.nScreenWidth=myWidth;
+        this.nScreenHeight=myHeight;
         this.nScreenWidth2=this.nScreenWidth>>1;
         this.nScreenHeight2=this.nScreenHeight>>1;
         

@@ -3,7 +3,7 @@ import {Motor} from '../../engines/motor'
 
 export class Label extends View{
 
-    private sColor:string='#FFFFFF';
+    private sColor:string=null;
     private sTexto:string=null;
 
     private sFontStyle:string;

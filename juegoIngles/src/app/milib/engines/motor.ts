@@ -76,7 +76,7 @@ export class Motor{
     private cicle():void{
         if(this.sRootViewUID!=null){
         //console.log("AAAAAAAAAAAA");
-            this.actualizar(this.sRootViewUID,null);
+           this.actualizar(this.sRootViewUID,null);
             this.ngZone.runOutsideAngular(() => this.pintar(this.sRootViewUID));
         }
         

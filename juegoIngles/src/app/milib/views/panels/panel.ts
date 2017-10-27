@@ -3,7 +3,7 @@ import {Motor} from '../../engines/motor'
 
 export class Panel extends View{
 
-    private sColor:string='#FFFFFF';
+    private sColor:string='rgba(138,221,45,0)';
     
     
     public setColor(vsColor:string):void{

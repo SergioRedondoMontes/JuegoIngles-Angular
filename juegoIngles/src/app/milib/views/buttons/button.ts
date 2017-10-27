@@ -9,7 +9,7 @@ import {Imagen} from '../imgs/imagen';
  */
 export class Button extends View {
 
-    private sColor:string='#FFFFFF';
+    private sColor:string=null;
     private lblTexto:Label=null;
     private listener:ButtonListener;
     private imgBack:Imagen=null;
