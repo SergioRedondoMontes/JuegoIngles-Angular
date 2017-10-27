@@ -21,7 +21,7 @@ export class Button extends View {
         this.motor.addViewToParentView(this,this.imgBack);
 
         this.lblTexto=new Label(this.motor,0,0,this.w,this.h);
-        this.lblTexto.setTexto("Boton");        
+        this.lblTexto.setTexto(null);        
         this.motor.addViewToParentView(this,this.lblTexto);
 
         EventsAdmin.instance.addMouseClickToView(this);

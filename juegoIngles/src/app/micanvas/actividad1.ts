@@ -7,6 +7,8 @@ import {Imagen} from '../milib/views/imgs/imagen';
 import {Button} from '../milib/views/buttons/button';
 import {Window} from '../milib/views/windows/window';
 
+
+
 export class Actividad1 implements EventsAdminListener{
 
     private motor:Motor;
@@ -16,7 +18,9 @@ export class Actividad1 implements EventsAdminListener{
     private windowJuego:Window;
     private imagenFondo:Imagen;
     private panelMenu:Panel;
-    private btnNubeIniciar: Button;
+    private btnPlay: Button;
+    private btnExit: Button;
+    
 
    
 
@@ -25,11 +29,13 @@ export class Actividad1 implements EventsAdminListener{
     constructor(vMotor:Motor){
         this.motor=vMotor;
         this.imagenFondo=new Imagen(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
-        this.imagenFondo.setImg('./assets/fondoMenu.png');
+        this.imagenFondo.setImg('./assets/fondoMenu.jpg');
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         
     }
+
+    
 
     /**
      * OJO!! AUNQUE EN ESTE EJEMPLO SE USE EL PANEL, ES OBLIGATORIO CREAR UN OBJETO WINDOW EN EL MILIB, Y AGREGARLE EL BOTON
@@ -41,17 +47,34 @@ export class Actividad1 implements EventsAdminListener{
         let pmx=DataHolder.instance.nScreenWidth2-(pmw>>1);
         let pmy=DataHolder.instance.nScreenHeight2-(pmh>>1);
         this.panelMenu = new Panel(this.motor,pmx,pmy,pmw,pmh);
+        this.panelMenu.setImagePath('./assets/backgroundPanel.png');
         this.motor.addViewToParentView(this.imagenFondo,this.panelMenu);
-        this.btnNubeIniciar= new Button(this.motor,this.panelMenu.w/2-(this.panelMenu.w/4)/2,this.panelMenu.h/16,this.panelMenu.w/4,this.panelMenu.h/4);
-        this.btnNubeIniciar.setImagePath('./assets/btnNube.png');
-        this.btnNubeIniciar.setTexto("JUGAR");
-        this.motor.addViewToParentView(this.panelMenu,this.btnNubeIniciar);
+        this.btnPlay= new Button(this.motor,this.panelMenu.w/2-(this.panelMenu.w/3)/2,this.panelMenu.h/6,this.panelMenu.w/3,this.panelMenu.h/4);
+        this.btnPlay.setImagePath('./assets/BTNPlay.png');
+        this.btnPlay.setListener(this);
+        this.motor.addViewToParentView(this.panelMenu,this.btnPlay);
+
+        this.btnExit= new Button(this.motor,this.panelMenu.w/2-(this.panelMenu.w/3)/2,this.panelMenu.h/1.8,this.panelMenu.w/3,this.panelMenu.h/4);
+        this.btnExit.setImagePath('./assets/btnExit.png');
+        this.motor.addViewToParentView(this.panelMenu,this.btnExit);
+        this.btnExit.setListener(this);
     }
 
     private crearEscenarioJuego():void{
         
     }
 
+
+    buttonListenerOnClick?(btn:Button):void{
+        if(this.btnPlay==btn){
+            this.motor.setViewVisibility(this.panelMenu.uid,false);
+        }
+
+        if(this.btnExit==btn){
+            this.motor.setViewVisibility(this.panelMenu.uid,false);
+        }
+
+    }
     
 
     

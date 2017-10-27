@@ -1,79 +1,112 @@
 import {View} from '../view';
 import {Motor} from '../../engines/motor';
-import {Button,ButtonListener} from '../buttons/button';
+import {Label} from '../labels/label';
+import {EventsAdmin,EventsAdminListener} from '../../events/eventsadmin';
+import {Imagen} from '../imgs/imagen';
+import {Button} from '../buttons/button';
+/**
+ * Clase que hereda de View y se encarga de pintar un elemento visual compuesto Boton por un Label y una Imagen.
+ */
+export class Window extends View{
 
-export class Window extends View implements ButtonListener{
+    private sColor:string=null;
+    private imgBack:Imagen=null;
+    public btnWindow:Button;
+  
 
-    private sColor:string='#FFFFFF';
-    private btnSalir:Button;
-    private btnMove:Button;
-    private listener:WindowListener;
     
+    /**
+     * Metodo de inicializacion de los elementos visuales en el Boton. Se ejecuta ak finalizar el constructor del padre (View)
+     */
+    /*public initFinish():void{
+    
+        this.imgBack=new Imagen(this.motor,0,0,this.w,this.h);
+        this.motor.addViewToParentView(this,this.imgBack);
+
+        this.lblTexto=new Label(this.motor,0,0,this.w,this.h);
+        this.lblTexto.setTexto("Boton");        
+        this.motor.addViewToParentView(this,this.lblTexto);
+
+        EventsAdmin.instance.addMouseClickToView(this);
+
+    }*/
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
         super(vmotor,vX,vY,vW,vH);
-        let btnsWidth=vW*0.1;
-        let btnsHeight=vH*0.1;
+        /*
+        this.imgBack=new Imagen(this.motor,0,0,this.w,this.h);
+        this.motor.addViewToParentView(this,this.imgBack);
+        */
+      
+ 
+        this.btnWindow = new Button(this.motor,this.w-this.w/6,0,this.w/6,this.h/16);
 
-        this.btnSalir=new Button(this.motor,this.w-btnsWidth,0,btnsWidth,btnsHeight);
-        this.btnSalir.setTexto("Salir");
-        this.btnSalir.setListener(this);
-        this.motor.addViewToParentView(this,this.btnSalir);
+      
+        this.btnWindow.setImagePath('./assets/btn.png');
+        this.btnWindow.setTexto("Volver a menu");
+        this.btnWindow.blVisible=true;
+        this.motor.addViewToParentView(this,this.btnWindow);
+        this.btnWindow.setListener(this);
+        this.blVisible=false;
 
-        this.btnMove=new Button(this.motor,0,0,btnsWidth,btnsHeight);
-        this.btnMove.setTexto("Move");
-        this.btnMove.setListener(this);
-        this.motor.addViewToParentView(this,this.btnMove);
-
+   
+        
     }
 
-     /**
-     * Metodo de setter para el listener que escuche los eventos del Window.
+    /**
+     * Metodo de setter para el listener que escuche los eventos del boton.
+    
+    /**
+
+     * Metodo que fija la imagen de fondo para el boton, que llama al metodo setImg de la clase Imagen
+     * @param vsPath String que contendra la ruta a la imagen en los ASSETS. Ej: './assets/btnsback/back1.png'
      */
-    public setListener(listener:WindowListener):void{
-        this.listener=listener;
+    public setImagePath(vsPath:string):void{
+        this.imgBack.setImg(vsPath);
     }
     
+    /**
+     * Metodo que setea el color de fondo del boton.
+     */
     public setColor(vsColor:string):void{
         this.sColor=vsColor;
     }
     
+    /**
+     * Metodo paint del boton (ademas de pintar los hijos, label e imagen, aqui iria el codigo que queramos dar al boton (padre)
+     * para pintarse)
+     * @param vctx Contexto donde se va a pintar
+     */
     paint(vctx:CanvasRenderingContext2D){
         
+        //console.log(this.xa+"========== "+this.ya);
+    }
+
+
+
+    /**
+     * Metodo para setear el texto del boton.
+     * @param vtexto String: Texto del boton.
+     */
+   
+
+    /**
+     * Metodo heredado del padre View que se ejecutara cuando detecte que en el View se ha pinchado con el raton.
+     * @param e Evento de MouseEvent con los detalles del evento.
+     */
     
-        vctx.fillStyle = this.sColor;  
-        vctx.fillRect(this.x, this.y, this.w, this.h);
-        
-    }
-
-    public setSize(vWidth:number,vHeight:number):void{
-        super.setSize(vWidth,vHeight);
-        let btnsWidth=vWidth*0.1;
-        let btnsHeight=vHeight*0.1;
-        this.btnSalir.setSize(btnsWidth,btnsHeight);
-        this.btnMove.setSize(btnsWidth,btnsHeight);
-    }
-
+   
     buttonListenerOnClick?(btn:Button):void{
-        if(this.btnSalir==btn){
-            if(this.listener!=null)this.listener.buttonExitClicked(this);
-        }
-        else if(this.btnMove==btn){
-            if(this.listener!=null)this.listener.buttonMoveClicked(this);
-        }
-
+     
     }
-
 }
 
 /**
  * Interface que representara el listener del Boton.
  */
-export interface WindowListener{
+
     /**
      * Metodo de notificacion del boton para avisar de que se ha presionado en el boton.
      */
-    buttonExitClicked?(win:Window):void;
-    buttonMoveClicked?(win:Window):void;
+  
    
-}
