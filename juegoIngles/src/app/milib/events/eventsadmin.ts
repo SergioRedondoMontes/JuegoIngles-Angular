@@ -107,12 +107,14 @@ export class EventsAdmin {
         var vfin:View=null;
         for(let i=0;i<EventsAdmin.instance.arViewsForMouseClick.length;i++){
             let vtemp:View=EventsAdmin.instance.arViewsForMouseClick[i];
-            if(vtemp.checkPointInView(e.pageX,e.pageY)){
+            if(vtemp.checkPointInView(e.pageX,e.pageY) && vtemp.blVisible){
                 vfin=vtemp;
+                
             }
             //EventsAdmin.instance.arListeners[i].screenSizeChanged(
                 //DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
          }
+        
          if(vfin!=null)vfin.mouseClicked(e);
     }
 

@@ -16,6 +16,7 @@ export class View{
 
     private tempMoveX:number=0;
     private tempMoveY:number=0;
+    public sClassName:string="View";
 
     /**
      * Constructor del motor.
@@ -102,7 +103,7 @@ export class View{
      * @param e 
      */
     public mouseClicked(e:MouseEvent):void{
-
+        
     }
 
     public mouseDown(e:MouseEvent):void{

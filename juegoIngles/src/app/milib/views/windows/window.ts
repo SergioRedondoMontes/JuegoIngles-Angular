@@ -33,24 +33,13 @@ export class Window extends View{
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
         super(vmotor,vX,vY,vW,vH);
+        this.sColor='white';
+       
         /*
         this.imgBack=new Imagen(this.motor,0,0,this.w,this.h);
         this.motor.addViewToParentView(this,this.imgBack);
         */
       
- 
-        this.btnWindow = new Button(this.motor,this.w-this.w/6,0,this.w/6,this.h/16);
-
-      
-        this.btnWindow.setImagePath('./assets/btn.png');
-        this.btnWindow.setTexto("Volver a menu");
-        this.btnWindow.blVisible=true;
-        this.motor.addViewToParentView(this,this.btnWindow);
-        this.btnWindow.setListener(this);
-        this.blVisible=false;
-
-   
-        
     }
 
     /**

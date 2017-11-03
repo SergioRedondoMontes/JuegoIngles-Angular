@@ -13,7 +13,7 @@ export class Button extends View {
     private lblTexto:Label=null;
     private listener:ButtonListener;
     private imgBack:Imagen=null;
-    
+    private sTEMP:string=null;
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
         super(vmotor,vX,vY,vW,vH);
@@ -25,6 +25,8 @@ export class Button extends View {
         this.motor.addViewToParentView(this,this.lblTexto);
 
         EventsAdmin.instance.addMouseClickToView(this);
+
+        this.sClassName = "Button";
     }
 
     /**
@@ -39,6 +41,7 @@ export class Button extends View {
      * @param vsPath String que contendra la ruta a la imagen en los ASSETS. Ej: './assets/btnsback/back1.png'
      */
     public setImagePath(vsPath:string):void{
+        //this.sTEMP=vsPath;
         this.imgBack.setImg(vsPath);
     }
     
@@ -64,6 +67,7 @@ export class Button extends View {
      * @param vtexto String: Texto del boton.
      */
     public setTexto(vtexto:string){
+        this.sTEMP=vtexto;
         this.lblTexto.setTexto(vtexto);
     }
 
@@ -72,6 +76,7 @@ export class Button extends View {
      * @param e Evento de MouseEvent con los detalles del evento.
      */
     public mouseClicked(e:MouseEvent):void{
+        //console.log("ENTRE!!!!!     "+this.sTEMP);
         if(this.listener!=null && this.listener.buttonListenerOnClick!=undefined)
             this.listener.buttonListenerOnClick(this);
     }

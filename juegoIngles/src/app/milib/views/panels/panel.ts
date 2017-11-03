@@ -2,10 +2,11 @@ import {View} from '../view';
 import {Motor} from '../../engines/motor';
 import {Imagen} from '../imgs/imagen';
 
+
 export class Panel extends View{
    
-   // private sColor:string='rgba(138,221,45,0)';
-    private sColor:string=null;
+   private sColor:string='rgba(138,221,45,0)';
+    //private sColor:string=null;
     private imgBack:Imagen=null;
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
