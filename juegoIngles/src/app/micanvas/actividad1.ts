@@ -6,11 +6,16 @@ import {Motor} from '../milib/engines/motor';
 import {Imagen} from '../milib/views/imgs/imagen';
 import {Button,ButtonListener} from '../milib/views/buttons/button';
 import {Window} from '../milib/views/windows/window';
-
+import {JuegoAnimales} from './juegoAnimales';
+import {JuegoColores} from './juegoColores';
+import {JuegoEscuela} from './juegoEscuela';
 
 
 export class Actividad1 implements EventsAdminListener,ButtonListener{
     private motor:Motor;
+    private JuegoAnimales:JuegoAnimales;
+    private JuegoColores:JuegoColores;
+    private JuegoEscuela:JuegoEscuela;
     private imagenFondo:Imagen;
     //variables menú
     private panelMenu:Panel;
@@ -33,8 +38,8 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.imagenFondo.setImg('./assets/fondoMenu.jpg');
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
+        this.crearEscenarioMenuJuego();
         this.crearEscenarioJuego();
-        
     }
 
     
@@ -65,27 +70,41 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
 
     }
 
-    private crearEscenarioJuego():void{
+    private crearEscenarioMenuJuego():void{
         this.windowSelector = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
         this.motor.addViewToParentView(this.imagenFondo, this.windowSelector);
 
 
-        this.btnColores = new Button(this.motor,this.windowSelector.w*0.0625,0.15*this.windowSelector.h,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
+        this.btnColores = new Button(this.motor,this.windowSelector.w*0.1,this.windowSelector.h*0.35,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
         this.btnColores.setImagePath('./assets/btnColores.jpg');
         this.motor.addViewToParentView(this.windowSelector,this.btnColores);
-     
+        this.btnColores.setListener(this);
 
-
-        this.btnAnimales = new Button(this.motor,this.btnColores.w+(this.windowSelector.w*0.125),0.15*this.windowSelector.h,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
+        this.btnAnimales = new Button(this.motor,this.windowSelector.w*0.4,this.windowSelector.h*0.35,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
         this.btnAnimales.setImagePath('./assets/btnAnimales.jpg');
         this.motor.addViewToParentView(this.windowSelector,this.btnAnimales);
-        
+        this.btnAnimales.setListener(this);
 
-        this.btnEscuela = new Button(this.motor,(this.btnAnimales.x+this.windowSelector.w*0.25)+this.windowSelector.w*0.0625,0.15*this.windowSelector.h,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
+        this.btnEscuela = new Button(this.motor,this.windowSelector.w*0.7,this.windowSelector.h*0.35,this.windowSelector.w*0.20,this.windowSelector.h*0.25);
         this.btnEscuela.setImagePath('./assets/btnEscuela.jpeg');
         this.motor.addViewToParentView(this.windowSelector,this.btnEscuela);
-       
+        this.btnEscuela.setListener(this);
+
+
         this.motor.setViewVisibility(this.windowSelector.uid,false);
+    }
+
+    private crearEscenarioJuego():void{
+        this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+        this.motor.addViewToParentView(this.imagenFondo, this.windowJuego);
+
+
+
+
+
+
+
+        this.motor.setViewVisibility(this.windowJuego.uid,false);
     }
 
 
@@ -97,6 +116,12 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.motor.setViewVisibility(this.windowSelector.uid,true);
         }else if(this.btnExit==btn){
             this.motor.setViewVisibility(this.panelMenu.uid,false);
+        }else if (this.btnAnimales==btn) {
+            this.motor.setViewVisibility(this.windowSelector.uid,false);
+        }else if (this.btnColores=btn) {
+            this.motor.setViewVisibility(this.windowSelector.uid,false);
+        }else if (this.btnEscuela==btn) {
+            this.motor.setViewVisibility(this.windowSelector.uid,false);
         }
 
 
