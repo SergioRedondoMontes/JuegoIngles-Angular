@@ -29,7 +29,9 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
 
   
     private crearEscenarioJuego():void{
-
+        this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+        this.motor.addViewToParentView(this.imagenFondo, this.windowJuego);
+        
     }
 
 

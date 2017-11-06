@@ -10,7 +10,7 @@ import {Window} from '../milib/views/windows/window';
 
 
 
-export class juegoColores implements EventsAdminListener,ButtonListener{
+export class JuegoColores implements EventsAdminListener,ButtonListener{
     private motor:Motor;
     private imagenFondo:Imagen;
     //variables Escenario Juego
