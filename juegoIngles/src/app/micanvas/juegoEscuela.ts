@@ -16,6 +16,7 @@ export class JuegoEscuela implements EventsAdminListener,ButtonListener{
     private actividad:Actividad1;
     //variables Escenario Juego
     private windowJuego:Window;
+    //Stickers
     private borrador:Sticker;
     private lapiz:Sticker;
     private libro:Sticker;
@@ -26,13 +27,15 @@ export class JuegoEscuela implements EventsAdminListener,ButtonListener{
    
 
     constructor(vMotor:Motor,vActividad:Actividad1){
-      this.motor=vMotor;
-      this.actividad=vActividad;
-      this.crearEscenarioJuego();
-  }
+      console.log("----------------------->>>>>> ");
+        this.motor=vMotor;
+        this.actividad=vActividad;
+        this.crearEscenarioJuego();
+    }
 
   
     private crearEscenarioJuego():void{
+      console.log("----------------------->>>>>> JUEGO ESCUELA");
       this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
       this.windowJuego.setImagePath('./assets/imagenesJuego/materialEscolar/materialEscolar.png');
       this.motor.addViewToParentView(this.actividad.imagenFondo, this.windowJuego);

@@ -39,7 +39,6 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         this.crearEscenarioMenuJuego();
-        this.crearEscenarioJuego();
     }
 
     
@@ -94,19 +93,6 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.motor.setViewVisibility(this.windowSelector.uid,false);
     }
 
-    private crearEscenarioJuego():void{
-        this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
-        this.motor.addViewToParentView(this.imagenFondo, this.windowJuego);
-
-
-
-
-
-
-
-        this.motor.setViewVisibility(this.windowJuego.uid,false);
-    }
-
 
     buttonListenerOnClick?(btn:Button):void{
         console.log("dentro");
@@ -119,10 +105,11 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         }else if (this.btnAnimales==btn) {
             this.motor.setViewVisibility(this.windowSelector.uid,false);
             this.JuegoAnimales=new JuegoAnimales(this.motor,this);
-        }else if (this.btnColores=btn) {
+        }else if (this.btnColores==btn) {
             //this.motor.setViewVisibility(this.windowSelector.uid,false);
             //this.JuegoColores=new JuegoColores(this.motor);
         }else if (this.btnEscuela==btn) {
+            console.log("ahhh");
             this.motor.setViewVisibility(this.windowSelector.uid,false);
             this.JuegoEscuela=new JuegoEscuela(this.motor,this);
         }
