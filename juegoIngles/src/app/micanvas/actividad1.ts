@@ -16,7 +16,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     private JuegoAnimales:JuegoAnimales;
     private JuegoColores:JuegoColores;
     private JuegoEscuela:JuegoEscuela;
-    private imagenFondo:Imagen;
+    public imagenFondo:Imagen;
     //variables menú
     private panelMenu:Panel;
     private btnPlay: Button;
@@ -118,13 +118,13 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.motor.setViewVisibility(this.panelMenu.uid,false);
         }else if (this.btnAnimales==btn) {
             this.motor.setViewVisibility(this.windowSelector.uid,false);
-           // this.JuegoAnimales=new JuegoAnimales(this.motor);
+            this.JuegoAnimales=new JuegoAnimales(this.motor,this);
         }else if (this.btnColores=btn) {
-            this.motor.setViewVisibility(this.windowSelector.uid,false);
-           // this.JuegoColores=new JuegoColores(this.motor);
+            //this.motor.setViewVisibility(this.windowSelector.uid,false);
+            //this.JuegoColores=new JuegoColores(this.motor);
         }else if (this.btnEscuela==btn) {
             this.motor.setViewVisibility(this.windowSelector.uid,false);
-           // this.JuegoEscuela=new JuegoEscuela(this.motor);
+            this.JuegoEscuela=new JuegoEscuela(this.motor,this);
         }
 
 

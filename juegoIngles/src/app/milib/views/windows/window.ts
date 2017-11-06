@@ -33,12 +33,10 @@ export class Window extends View{
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
         super(vmotor,vX,vY,vW,vH);
-        this.sColor='white';
-       
-        /*
+        //this.sColor='white';
         this.imgBack=new Imagen(this.motor,0,0,this.w,this.h);
         this.motor.addViewToParentView(this,this.imgBack);
-        */
+        
       
     }
 
