@@ -6,16 +6,28 @@ import {Motor} from '../milib/engines/motor';
 import {Imagen} from '../milib/views/imgs/imagen';
 import {Button,ButtonListener} from '../milib/views/buttons/button';
 import {Window} from '../milib/views/windows/window';
-import {Sticker} from '../milib/views/stickers/sticker';
+import {Sticker,stickerListener} from '../milib/views/stickers/sticker';
 
 
 
 
-export class JuegoAnimales implements EventsAdminListener,ButtonListener{
+export class JuegoAnimales implements EventsAdminListener,ButtonListener,stickerListener{
     private motor:Motor;
     private actividad:Actividad1;
     //variables Escenario Juego
     private windowJuego:Window;
+    private imgFondoSiluetas:Imagen;
+    private panelStickers: Panel;
+    private panelTrans: Panel;
+
+    private panelBlack1:Panel;
+    private panelBlack2:Panel;
+    private panelBlack3:Panel;
+    private panelBlack4:Panel;
+    private panelBlack5:Panel;
+    private panelBlack6:Panel;
+    private panelBlack7:Panel;
+
     //Stickers
     private conejo:Sticker;
     private gato:Sticker;
@@ -36,15 +48,34 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
 
   
     private crearEscenarioJuego():void{
-        console.log("----------------------->>>>>> JUEGO ANIMALES");
+
+       
+
+        this.imgFondoSiluetas = new Imagen(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+        this.imgFondoSiluetas.setImg('./assets/imagenesJuego/animales/animales2.jpg');
+        this.motor.addViewToParentView(this.actividad.imagenFondo, this.imgFondoSiluetas);
+
+        this.panelTrans = new Panel(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+        this.motor.addViewToParentView(this.imgFondoSiluetas, this.panelTrans);
+
+
+        this.panelBlack1 = new Panel(this.motor,0,0,DataHolder.instance.nScreenWidth*0.2,DataHolder.instance.nScreenHeight*0.38);
+        this.panelBlack1.setColor("black");
+        this.motor.addViewToParentView(this.panelTrans, this.panelBlack1);
+
+
         this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
-        this.windowJuego.setImagePath('./assets/imagenesJuego/animales/fAnimales.png');
-        this.motor.addViewToParentView(this.actividad.imagenFondo, this.windowJuego);
+        this.windowJuego.setImagePath('./assets/imagenesJuego/animales/fAnimales1.png');
+        this.motor.addViewToParentView(this.panelTrans, this.windowJuego);
+
+
+
 
         this.conejo = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.2,DataHolder.instance.nScreenHeight*0.38);
         this.conejo.setImg('./assets/imagenesJuego/animales/conejo.png');
         this.conejo.setName("conejo");
         this.motor.addViewToParentView(this.windowJuego, this.conejo);
+        this.conejo.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.conejo);
 
         this.gato = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.2,DataHolder.instance.nScreenHeight*0.39);
@@ -65,7 +96,20 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
         
 
     }
-  
+
+    
+    buttonListenerOnUp?(sticker:Sticker):void{
+        console.log("holaaaaaaaaaa");
+        console.log("Nombre: "  + sticker.getName());
+        if(sticker.getName()=='conejo' && (sticker.x>0 && sticker.x<DataHolder.instance.nScreenWidth*0.2) && (sticker.y>0 && sticker.y<DataHolder.instance.nScreenHeight*0.38)){
+            this.motor.setViewVisibility(sticker.uid,false);
+            this.motor.setViewVisibility(this.panelBlack1.uid,false);
+         }else if(sticker.getName()=='gato' && (sticker.x>0 && sticker.x<DataHolder.instance.nScreenWidth*0.2) && (sticker.y>DataHolder.instance.nScreenHeight*0.41 && sticker.y<DataHolder.instance.nScreenHeight*0.8)){
+             this.motor.setViewVisibility(sticker.uid,false);
+         }
+
+
+    }
     
 
 

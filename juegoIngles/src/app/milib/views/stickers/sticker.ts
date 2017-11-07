@@ -13,6 +13,7 @@ export class Sticker extends Imagen{
     private imgBack1: HTMLImageElement;
     private blImgLoaded1:boolean=false;
     private name:string;
+    private listener:stickerListener;
 
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
@@ -41,13 +42,20 @@ export class Sticker extends Imagen{
         this.name=name;
     }
 
+    public getName():string{
+        return this.name;
+    }
+
     /**
      * Metodo que se ejecuta como un evento que notifica cuando la imagen se descarga correctamente
      */
     private imageReady1(img_self:Imagen):void{
         this.blImgLoaded1=true;
     }
-
+    
+    public setListener(listener:stickerListener):void{
+        this.listener=listener;
+    }
     /**
      * Paint de la clase Imagen.
      * @param vctx Contexto para poder pintar la imagen.
@@ -59,14 +67,14 @@ export class Sticker extends Imagen{
         }
     }
 
+
+
     public mouseUp(e:MouseEvent):void{
-        console.log(e.x,e.y);
         super.mouseUp(e);
-        if(this.name=='conejo' && (e.x>0 && e.x<DataHolder.instance.nScreenWidth*0.2) && (e.y>0 && e.y<DataHolder.instance.nScreenHeight*0.38)){
-           this.motor.setViewVisibility(this.uid,false);
-        }else if(this.name=='gato' && (e.x>0 && e.x<DataHolder.instance.nScreenWidth*0.2) && (e.y>DataHolder.instance.nScreenHeight*0.41 && e.y<DataHolder.instance.nScreenHeight*0.8)){
-            this.motor.setViewVisibility(this.uid,false);
-        }
+        console.log("dentro del mouseUp");
+        if(this.listener!=null && this.listener.buttonListenerOnUp!=undefined)
+        this.listener.buttonListenerOnUp(this);
+       
 
     }
 
