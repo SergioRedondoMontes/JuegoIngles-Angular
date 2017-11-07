@@ -41,6 +41,7 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
         this.conejo = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.3,DataHolder.instance.nScreenHeight*0.3);
         this.conejo.setImg('./assets/imagenesJuego/animales/conejo.png');
         this.motor.addViewToParentView(this.windowJuego, this.conejo);
+        EventsAdmin.instance.addMouseDragToView(this.conejo);
         
     }
 
