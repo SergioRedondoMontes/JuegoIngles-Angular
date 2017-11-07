@@ -2,6 +2,7 @@ import {View} from '../view';
 import {Motor} from '../../engines/motor';
 import {EventsAdmin} from '../../events/eventsadmin';
 import {Imagen} from '../imgs/imagen';
+import {DataHolder} from '../../dataholder/dataholder';
 
 /**
  * Clase que hereda de View y se encarga de pintar un elemento visual compuesto Boton por un Label y una Imagen.
@@ -11,6 +12,7 @@ export class Sticker extends Imagen{
 
     private imgBack1: HTMLImageElement;
     private blImgLoaded1:boolean=false;
+    private name:string;
 
 
     constructor(vmotor:Motor,vX:number,vY:number,vW:number,vH:number){
@@ -35,6 +37,10 @@ export class Sticker extends Imagen{
         this.imgBack1.src=urlImg;
     }
 
+    public setName(name:string):void{
+        this.name=name;
+    }
+
     /**
      * Metodo que se ejecuta como un evento que notifica cuando la imagen se descarga correctamente
      */
@@ -53,4 +59,20 @@ export class Sticker extends Imagen{
         }
     }
 
+    public mouseUp(e:MouseEvent):void{
+        console.log(e.x,e.y);
+        super.mouseUp(e);
+        if(this.name=='conejo' && (e.x>0 && e.x<DataHolder.instance.nScreenWidth*0.2) && (e.y>0 && e.y<DataHolder.instance.nScreenHeight*0.38)){
+           this.motor.setViewVisibility(this.uid,false);
+        }else if(this.name=='gato' && (e.x>0 && e.x<DataHolder.instance.nScreenWidth*0.2) && (e.y>DataHolder.instance.nScreenHeight*0.41 && e.y<DataHolder.instance.nScreenHeight*0.8)){
+            this.motor.setViewVisibility(this.uid,false);
+        }
+
+    }
+
+}
+
+
+export interface stickerListener{
+    buttonListenerOnUp?(sticker:Sticker):void;
 }

@@ -150,6 +150,7 @@ export class EventsAdmin {
                 //DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
          }
          if(vfin!=null)vfin.mouseUp(e);
+
     }
 
     /**

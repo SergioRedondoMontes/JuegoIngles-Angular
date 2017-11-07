@@ -24,6 +24,8 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
     private perro:Sticker;
     private pez:Sticker;
     private tortuga:Sticker;
+
+    private imgPrueba:Imagen;
    
 
     constructor(vMotor:Motor,vActividad:Actividad1){
@@ -38,10 +40,23 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
         this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
         this.windowJuego.setImagePath('./assets/imagenesJuego/animales/fAnimales.png');
         this.motor.addViewToParentView(this.actividad.imagenFondo, this.windowJuego);
-        this.conejo = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.3,DataHolder.instance.nScreenHeight*0.3);
+
+        this.conejo = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.2,DataHolder.instance.nScreenHeight*0.38);
         this.conejo.setImg('./assets/imagenesJuego/animales/conejo.png');
+        this.conejo.setName("conejo");
         this.motor.addViewToParentView(this.windowJuego, this.conejo);
         EventsAdmin.instance.addMouseDragToView(this.conejo);
+
+        this.gato = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.2,DataHolder.instance.nScreenHeight*0.39);
+        this.gato.setImg('./assets/imagenesJuego/animales/gato.png');
+        this.gato.setName("gato");
+        this.motor.addViewToParentView(this.windowJuego, this.gato);
+        EventsAdmin.instance.addMouseDragToView(this.gato);
+        /*
+        this.imgPrueba = new Imagen(this.motor,0,0,this.windowJuego.w*0.2,this.windowJuego.h*0.38);
+        this.imgPrueba.setImg('./assets/btnColores.jpg');
+        this.motor.addViewToParentView(this.windowJuego,this.imgPrueba);
+        */
         
     }
 
@@ -50,8 +65,7 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener{
         
 
     }
-    
-
+  
     
 
 
