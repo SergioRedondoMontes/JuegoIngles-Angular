@@ -101,49 +101,49 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
         this.windowJuego.setImagePath('./assets/imagenesJuego/animales/fAnimales1.png');
         this.motor.addViewToParentView(this.panelTrans, this.windowJuego);
 
-        this.conejo = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.12,DataHolder.instance.nScreenHeight*0.32);
+        this.conejo = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.6,DataHolder.instance.nScreenHeight*0.01,DataHolder.instance.nScreenWidth*0.12,DataHolder.instance.nScreenHeight*0.32);
         this.conejo.setImg('./assets/imagenesJuego/animales/conejo.png');
         this.conejo.setName("conejo");
         this.motor.addViewToParentView(this.windowJuego, this.conejo);
         this.conejo.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.conejo);
 
-        this.gato = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
+        this.gato = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.65,DataHolder.instance.nScreenHeight*0.38,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
         this.gato.setImg('./assets/imagenesJuego/animales/gato.png');
         this.gato.setName("gato");
         this.motor.addViewToParentView(this.windowJuego, this.gato);
         this.gato.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.gato);
 
-        this.pez = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.35);
+        this.pez = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.67,DataHolder.instance.nScreenHeight*0.65,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.35);
         this.pez.setImg('./assets/imagenesJuego/animales/pez.png');
         this.pez.setName("pez");
         this.motor.addViewToParentView(this.windowJuego, this.pez);
         this.pez.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.pez);
 
-        this.loro = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
+        this.loro = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.72,DataHolder.instance.nScreenHeight*0.05,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
         this.loro.setImg('./assets/imagenesJuego/animales/loro.png');
         this.loro.setName("loro");
         this.motor.addViewToParentView(this.windowJuego, this.loro);
         this.loro.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.loro);
 
-        this.perro = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
+        this.perro = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.84,DataHolder.instance.nScreenHeight*0.015,DataHolder.instance.nScreenWidth*0.19,DataHolder.instance.nScreenHeight*0.4);
         this.perro.setImg('./assets/imagenesJuego/animales/perro.png');
         this.perro.setName("perro");
         this.motor.addViewToParentView(this.windowJuego, this.perro);
         this.perro.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.perro);
 
-        this.tortuga = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.35);
+        this.tortuga = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.8,DataHolder.instance.nScreenHeight*0.4,DataHolder.instance.nScreenWidth*0.19,DataHolder.instance.nScreenHeight*0.29);
         this.tortuga.setImg('./assets/imagenesJuego/animales/tortuga.png');
         this.tortuga.setName("tortuga");
         this.motor.addViewToParentView(this.windowJuego, this.tortuga);
         this.tortuga.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.tortuga);
 
-        this.pajaro = new Sticker(this.motor,0,50,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.35);
+        this.pajaro = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.84,DataHolder.instance.nScreenHeight*0.67,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.35);
         this.pajaro.setImg('./assets/imagenesJuego/animales/pajaro.png');
         this.pajaro.setName("pajaro");
         this.motor.addViewToParentView(this.windowJuego, this.pajaro);
