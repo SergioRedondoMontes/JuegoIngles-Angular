@@ -70,7 +70,7 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
         this.panelBlackPez.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackPez);
 
-        this.panelBlackLoro = new Panel(this.motor,DataHolder.instance.nScreenWidth*0.354,0,DataHolder.instance.nScreenWidth*0.13,DataHolder.instance.nScreenHeight*0.452);
+        this.panelBlackLoro = new Panel(this.motor,DataHolder.instance.nScreenWidth*0.354,DataHolder.instance.nScreenHeight*0.07,DataHolder.instance.nScreenWidth*0.15,DataHolder.instance.nScreenHeight*0.4);
         this.panelBlackLoro.setColor("black");
         this.motor.addViewToParentView(this.panelTrans, this.panelBlackLoro);
 
@@ -115,7 +115,7 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
         this.gato.setListener(this);
         EventsAdmin.instance.addMouseDragToView(this.gato);
 
-        this.pez = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.67,DataHolder.instance.nScreenHeight*0.65,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.35);
+        this.pez = new Sticker(this.motor,DataHolder.instance.nScreenWidth*0.67,DataHolder.instance.nScreenHeight*0.7,DataHolder.instance.nScreenWidth*0.18,DataHolder.instance.nScreenHeight*0.28);
         this.pez.setImg('./assets/imagenesJuego/animales/pez.png');
         this.pez.setName("pez");
         this.motor.addViewToParentView(this.windowJuego, this.pez);
