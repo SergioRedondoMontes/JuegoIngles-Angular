@@ -12,6 +12,8 @@ import {Sticker} from '../milib/views/stickers/sticker';
 
 
 export class JuegoEscuela implements EventsAdminListener,ButtonListener{
+  panelImg: Panel;
+  imgFondoEscuela: any;
     private motor:Motor;
     private actividad:Actividad1;
     //variables Escenario Juego
@@ -35,13 +37,18 @@ export class JuegoEscuela implements EventsAdminListener,ButtonListener{
 
   
     private crearEscenarioJuego():void{
-      console.log("----------------------->>>>>> JUEGO ESCUELA");
-      this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
-      this.windowJuego.setImagePath('./assets/imagenesJuego/materialEscolar/materialEscolar.png');
-      this.motor.addViewToParentView(this.actividad.imagenFondo, this.windowJuego);
-      this.borrador = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.3,DataHolder.instance.nScreenHeight*0.3);
-      this.borrador.setImg('./assets/imagenesJuego/materialEscolar/borrador.png');
-      this.motor.addViewToParentView(this.windowJuego, this.borrador);
+      this.imgFondoEscuela = new Imagen(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+      this.imgFondoEscuela.setImg('./assets/comingSoon.jpg');
+      this.motor.addViewToParentView(this.actividad.imagenFondo, this.imgFondoEscuela);
+      this.panelImg = new Panel(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+      this.motor.addViewToParentView(this.imgFondoEscuela, this.panelImg);
+      // console.log("----------------------->>>>>> JUEGO ESCUELA");
+      // this.windowJuego = new Window(this.motor,0,0,DataHolder.instance.nScreenWidth,DataHolder.instance.nScreenHeight);
+      // this.windowJuego.setImagePath('./assets/imagenesJuego/materialEscolar/materialEscolar.png');
+      // this.motor.addViewToParentView(this.actividad.imagenFondo, this.windowJuego);
+      // this.borrador = new Sticker(this.motor,0,0,DataHolder.instance.nScreenWidth*0.3,DataHolder.instance.nScreenHeight*0.3);
+      // this.borrador.setImg('./assets/imagenesJuego/materialEscolar/borrador.png');
+      // this.motor.addViewToParentView(this.windowJuego, this.borrador);
     }
 
 

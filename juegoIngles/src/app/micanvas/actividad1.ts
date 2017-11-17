@@ -106,8 +106,8 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
             this.motor.setViewVisibility(this.windowSelector.uid,false);
             this.JuegoAnimales=new JuegoAnimales(this.motor,this);
         }else if (this.btnColores==btn) {
-            //this.motor.setViewVisibility(this.windowSelector.uid,false);
-            //this.JuegoColores=new JuegoColores(this.motor);
+            this.motor.setViewVisibility(this.windowSelector.uid,false);
+            this.JuegoColores=new JuegoColores(this.motor,this);
         }else if (this.btnEscuela==btn) {
             console.log("ahhh");
             this.motor.setViewVisibility(this.windowSelector.uid,false);
