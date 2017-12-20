@@ -61,7 +61,7 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
     constructor(vMotor:Motor,vActividad:Actividad1){
         this.motor=vMotor;
         this.actividad=vActividad;
-        this.audio = new Audio('./assets/sounds/welcome.mp3/');
+        this.audio = new Audio('./assets/sounds/welcome.mp3');
         var aux= this;
         setTimeout(function() {
             aux.audio.play();
@@ -242,43 +242,43 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
         if(sticker.getName()=='conejo' && (sticker.x>0 && sticker.x<DataHolder.instance.nScreenWidth*0.15) && (sticker.y>0 && sticker.y<DataHolder.instance.nScreenHeight*0.35)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackConejo.uid,false);
-            this.audio = new Audio('./assets/sounds/rabbit.mp3/');
+            this.audio = new Audio('./assets/sounds/rabbit.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblConejo.uid,true);
          }else if(sticker.getName()=='gato' && (sticker.x>0 && sticker.x<DataHolder.instance.nScreenWidth*0.18) && (sticker.y>DataHolder.instance.nScreenHeight*0.41 && sticker.y<DataHolder.instance.nScreenHeight*0.76)){
              this.motor.setViewVisibility(sticker.uid,false);
              this.motor.setViewVisibility(this.panelBlackGato.uid,false);
-                this.audio = new Audio('./assets/sounds/cat.mp3/');
+                this.audio = new Audio('./assets/sounds/cat.mp3');
                 this.audio.play();
                 this.motor.setViewVisibility(this.lblGato.uid,true);
          }else if(sticker.getName()=='pez' && (sticker.x>DataHolder.instance.nScreenWidth*0.17 && sticker.x<DataHolder.instance.nScreenWidth*0.345) && (sticker.y>0 && sticker.y<DataHolder.instance.nScreenHeight*0.38)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackPez.uid,false);
-            this.audio = new Audio('./assets/sounds/fish.mp3/');
+            this.audio = new Audio('./assets/sounds/fish.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblPez.uid,true);
          }else if(sticker.getName()=='loro' && (sticker.x>DataHolder.instance.nScreenWidth*0.354 && sticker.x<DataHolder.instance.nScreenWidth*0.484) && (sticker.y>0 && sticker.y<DataHolder.instance.nScreenHeight*0.452)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackLoro.uid,false);
-            this.audio = new Audio('./assets/sounds/parrot.mp3/');
+            this.audio = new Audio('./assets/sounds/parrot.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblLoro.uid,true);
          }else if(sticker.getName()=='perro' && (sticker.x>DataHolder.instance.nScreenWidth*0.49&& sticker.x<DataHolder.instance.nScreenWidth*0.68) && (sticker.y>0 && sticker.y<DataHolder.instance.nScreenHeight*0.457)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackPerro.uid,false);
-            this.audio = new Audio('./assets/sounds/dog.mp3/');
+            this.audio = new Audio('./assets/sounds/dog.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblPerro.uid,true);
          }else if(sticker.getName()=='tortuga' && (sticker.x>DataHolder.instance.nScreenWidth*0.22&& sticker.x<DataHolder.instance.nScreenWidth*0.75) && (sticker.y>DataHolder.instance.nScreenHeight*0.53 && sticker.y<DataHolder.instance.nScreenHeight*0.95)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackTortuga.uid,false);
-            this.audio = new Audio('./assets/sounds/turtle.mp3/');
+            this.audio = new Audio('./assets/sounds/turtle.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblTortuga.uid,true);
          }else if(sticker.getName()=='pajaro' && (sticker.x>DataHolder.instance.nScreenWidth*0.4&& sticker.x<DataHolder.instance.nScreenWidth*0.62) && (sticker.y>DataHolder.instance.nScreenHeight*0.5 && sticker.y<DataHolder.instance.nScreenHeight*0.865)){
             this.motor.setViewVisibility(sticker.uid,false);
             this.motor.setViewVisibility(this.panelBlackPajaro.uid,false);
-            this.audio = new Audio('./assets/sounds/bird.mp3/');
+            this.audio = new Audio('./assets/sounds/bird.mp3');
             this.audio.play();
             this.motor.setViewVisibility(this.lblPajaro.uid,true);
          }
@@ -305,8 +305,8 @@ export class JuegoAnimales implements EventsAdminListener,ButtonListener,sticker
             var aux= this;
             setTimeout(function() {
                 aux.motor.setViewVisibility(aux.imgVictoria.uid,true);
-                aux.audioGreat2 = new Audio ('./assets/sounds/aplausos.mp3/');
-                aux.audioGreat1 = new Audio('./assets/sounds/congratulations.mp3/');
+                aux.audioGreat2 = new Audio ('./assets/sounds/aplausos.mp3');
+                aux.audioGreat1 = new Audio('./assets/sounds/congratulations.mp3');
                 aux.audioGreat2.play();
                 aux.audioGreat1.play();
                 setTimeout(function() {

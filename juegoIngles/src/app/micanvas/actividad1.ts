@@ -42,7 +42,7 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
         this.motor.setRaiz(this.imagenFondo);
         this.crearEscenarioMenu();
         this.crearEscenarioMenuJuego();
-            this.audioMenu = new Audio('./assets/sounds/menu.mp3/');
+            this.audioMenu = new Audio('./assets/sounds/menu.mp3');
             this.audioMenu.play();
     }
 
@@ -102,32 +102,32 @@ export class Actividad1 implements EventsAdminListener,ButtonListener{
     buttonListenerOnClick?(btn:Button):void{
         console.log("dentro");
         if(this.btnPlay==btn){
-            this.audioButtons = new Audio('./assets/sounds/button.mp3/');
+            this.audioButtons = new Audio('./assets/sounds/button.mp3');
             this.audioButtons.play();
             console.log("play");
             this.motor.setViewVisibility(this.panelMenu.uid,false);
             this.motor.setViewVisibility(this.windowSelector.uid,true);
         }else if(this.btnExit==btn){
-            this.audioButtons = new Audio('./assets/sounds/button.mp3/');
+            this.audioButtons = new Audio('./assets/sounds/button.mp3');
             this.audioButtons.play();
             this.motor.setViewVisibility(this.panelMenu.uid,false);
         }else if (this.btnAnimales==btn) {
             this.audioMenu.pause();
-            this.audioSelectorGame=new Audio('./assets/sounds/button.mp3/');
+            this.audioSelectorGame=new Audio('./assets/sounds/button.mp3');
             this.audioSelectorGame.play();
-            this.audioSelectorGame=new Audio('./assets/sounds/startBattle.mp3/');
+            this.audioSelectorGame=new Audio('./assets/sounds/startBattle.mp3');
             this.audioSelectorGame.play();
             this.motor.setViewVisibility(this.windowSelector.uid,false);
             this.JuegoAnimales=new JuegoAnimales(this.motor,this);
         }else if (this.btnColores==btn) {
             this.audioMenu.pause();
-            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3/');
+            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3');
             this.audioSelectorGame.play();
             this.motor.setViewVisibility(this.windowSelector.uid,false);
             this.JuegoColores=new JuegoColores(this.motor,this);
         }else if (this.btnEscuela==btn) {
             this.audioMenu.pause();
-            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3/');
+            this.audioSelectorGame = new Audio('./assets/sounds/button.mp3');
             this.audioSelectorGame.play();
             console.log("ahhh");
             this.motor.setViewVisibility(this.windowSelector.uid,false);
